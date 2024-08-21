@@ -191,33 +191,31 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="mb-12">
-          <h2 className="text-4xl font-bold text-center mb-8 text-[#008000]">
-            الإعلانات الجديدة
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advertisements.slice(0, 3).map((ad) => (
-              <div
-                key={ad.ID}
-                className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105"
-              >
-                <img
-                  src={ad.URL}
-                  alt={`TITLE ${ad.TITLE}`}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="font-bold text-xl mb-3 text-jordan-green">
-                    {ad.TITLE}
-                  </h3>
-                  <button className="bg-jordan-red text-white px-6 py-3 rounded-lg w-full hover:bg-opacity-90 transition-colors text-lg font-semibold">
-                    {ad.DESCRIPTION}
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+      <section className="mb-12">
+        <h2 className="text-3xl font-bold text-center mb-6 text-jordan-green">
+          الإعلانات الجديدة
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {advertisements.slice(0, 3).map((ad) => (
+            <div
+              key={ad.ID}
+              className="bg-white border-2 border-jordan-red p-4 rounded-lg shadow-lg transition-transform hover:scale-105"
+            >
+              <img
+                src="https://kenanahnews.com/wp-content/uploads/2017/08/20631398_1294117427381344_977119165_n-1.jpg"
+                alt={`TITLE ${ad.TITLE}`}
+                className="w-full h-32 object-cover mb-4 rounded-lg"
+              />
+              <h3 className="font-bold text-lg mb-2 text-jordan-green">
+                {ad.TITLE}
+              </h3>
+              <button className="bg-jordan-red text-white px-4 py-2 rounded-lg w-full hover-bg-jordan-red transition-colors">
+                {ad.DESCRIPTION}
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
 
         <section
           className="mb-12 bg-white rounded-lg shadow-lg overflow-hidden"

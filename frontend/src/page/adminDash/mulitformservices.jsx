@@ -124,24 +124,24 @@ const ServiceForm = () => {
           onClick={toggleFormType}
         >
           <div
-            className={`absolute top-0 right-0 w-1/2 h-full bg-blue-500 rounded-full transition-transform duration-300 ease-in-out ${
-              formType === "advertisement" ? "transform translate-x-full" : ""
+            className={`absolute top-0 left-0 w-1/2 h-full bg-green-500 rounded-full transition-transform duration-300 ease-in-out ${
+              formType === "debate" ? "transform translate-x-0" : "transform translate-x-full"
             }`}
           ></div>
           <div className="absolute top-0 right-0 w-full h-full flex items-center justify-around text-sm font-bold">
             <span
-              className={formType === "debate" ? "text-white" : "text-gray-700"}
+              className={formType === "debate" ? "text-black" : "text-white font-bold"}
             >
               طلب مناظرة
             </span>
             <span
               className={
-                formType === "advertisement" ? "text-white" : "text-gray-700"
+                formType === "advertisement" ? "text-black font-bold" : "text-white font-bold"
               }
             >
               طلب إعلان
             </span>
-          </div>
+        </div>
         </div>
       </div>
 
@@ -164,7 +164,7 @@ const ServiceForm = () => {
               name="DATE_OF_DEBATE"
               value={debateFormData.DATE_OF_DEBATE}
               onChange={handleDebateChange}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow appearance-none border rounded-md w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-gren-500"
               required
             />
           </div>
@@ -468,7 +468,7 @@ const ServiceForm = () => {
 
       <button 
         type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
+        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
         
       >
         {formType === "debate" ? "إضافة المناظرة" : "إرسال الإعلان"}

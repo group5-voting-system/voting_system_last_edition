@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import PaymentComponent from "../payment/payment";
 
 function Header() {
+  const [showPayment, setShowPayment] = useState(false);
+
+  const handleServicesClick = () => {
+    setShowPayment(true);
+  };
+
+
   return (
     <header className="relative overflow-hidden bg-transparent h-16">
       {/* Moving Jordanian flag background */}
@@ -72,6 +81,7 @@ function Header() {
             <Link
               to="/services"
               className="text-white hover:text-jordan-red transition duration-300 text-lg"
+              onClick={handleServicesClick}
             >
               خدماتنا
             </Link>
@@ -86,6 +96,11 @@ function Header() {
           </li>
         </ul>
       </nav>
+      {/* {showPayment && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+          <PaymentComponent onClose={() => setShowPayment(false)} />
+        </div>
+      )} */}
     </header>
   );
 }

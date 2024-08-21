@@ -108,7 +108,7 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 
 const stripePromise = loadStripe('pk_test_51PoX2LCiW8Tyjn868o9kkxOyQ4n3ZUbIv1bgEXKfwEZtEXgSPChEYjsHblAYZdiNedWgnbd6gDW9iGsWkcTdaRX700uwInReW1');
 
-const CheckoutForm = () => {
+const CheckoutForm = ({onClose}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -178,16 +178,18 @@ const CheckoutForm = () => {
       <button
         type="submit"
         disabled={!stripe || processing || succeeded}
-        className={`mt-4 p-3 w-full text-white ${processing ? 'bg-gray-500' : 'bg-blue-600'} rounded-md`}
+        className={`mt-4 p-3 w-full text-white ${processing ? 'bg-gray-500' : 'bg-green-600'} rounded-md`}
+        onClick={onClose}
       >
         {processing ? 'Processing...' : 'Pay Now'}
       </button>
+      <p className='text-red-600 font-semibold mt-4'>سعر خدمة الإعلان الواحدة : $450</p>
       {succeeded && <p className="text-green-500 mt-4">Payment succeeded!</p>}
     </form>
   );
 };
 
-const PaymentComponent = () => {
+const PaymentComponent = ({onClose}) => {
   return (
     <Elements stripe={stripePromise}>
       <CheckoutForm />
