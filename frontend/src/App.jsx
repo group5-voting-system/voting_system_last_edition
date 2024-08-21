@@ -28,6 +28,8 @@ import Log_in from "./page/sign_up.jsx";
 import Log_in_home from "./page/log_in_home.jsx";
 import ServiceForm from "./page/adminDash/mulitformservices.jsx";
 import Update_password from "./page/update_password.jsx";
+import RoomPage from "./comonamt/room.jsx";
+
 
 // import Home from "./page/Home";
 function App() {
@@ -50,6 +52,7 @@ function App() {
         <Route path="/log-in-new" element={<Log_in_new />} />
         <Route path="/update-pass" element={<Update_password />} />
         <Route path="/" element={<Home />} />
+        <Route path="/room/:roomId" element={<RoomPage />} /> 
         <Route path="/payment" element={<PaymentComponent />} />
         <Route path="/area" element={<ArabicGrid />} />
         <Route path="/type" element={<ElectionCircleSelection />} />
