@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-// import "./Room.css";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
 import { APP_ID, SECRET } from "../Config";
@@ -11,9 +10,8 @@ function RoomPage() {
   const zpRef = useRef(null);
   const videoContainerRef = useRef(null);
   const [joined, setJoined] = useState(false);
-  const [callType, setCallType] = useState(""); // State to store the call type
+  const [callType, setCallType] = useState("");
 
-  // Initialize ZegoUIKit and join room on component mount
   const myMeeting = (type) => {
     const appID = APP_ID;
     const serverSecret = SECRET;
@@ -22,7 +20,7 @@ function RoomPage() {
       serverSecret,
       roomId,
       Date.now().toString(),
-      "Your Name"
+      "اسمك"
     );
 
     const zp = ZegoUIKitPrebuilt.create(kitToken);
@@ -32,7 +30,7 @@ function RoomPage() {
       container: videoContainerRef.current,
       sharedLinks: [
         {
-          name: "Video Call Link",
+          name: "رابط مكالمة الفيديو",
           url:
             window.location.protocol +
             "//" +
@@ -58,7 +56,6 @@ function RoomPage() {
     });
   };
 
-  // Handle exit from the room
   const handleExit = () => {
     if (zpRef.current) {
       zpRef.current.destroy();
@@ -66,21 +63,18 @@ function RoomPage() {
     navigate("/");
   };
 
-  // On component mount, extract call type from location and initialize meeting
   useEffect(() => {
     const query = new URLSearchParams(location.search);
     const type = query.get("type");
 
-    setCallType(type); // Update state with call type
+    setCallType(type);
   }, [location.search]);
 
-  // Initialize meeting after callType state is set
   useEffect(() => {
     if (callType) {
       myMeeting(callType);
     }
 
-    // Cleanup function for component unmount
     return () => {
       if (zpRef.current) {
         zpRef.current.destroy();
@@ -89,20 +83,26 @@ function RoomPage() {
   }, [callType, roomId, navigate]);
 
   return (
-    <div className="room-container">
+    <div className="room-container flex flex-col items-center justify-center h-screen">
       {!joined && (
         <>
-          <header className="room-header">
+          <header className="text-xl font-bold mb-4">
             {callType === "one-on-one"
-              ? "One-on-One Video Call"
-              : "Group Video Call"}
+              ? "مكالمة فيديو فردية"
+              : "مكالمة فيديو جماعية"}
           </header>
-          <button className="exit-button" onClick={handleExit}>
-            Exit
+          <button
+            className="bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors duration-300"
+            onClick={handleExit}
+          >
+            خروج
           </button>
         </>
       )}
-      <div ref={videoContainerRef} className="video-container" />
+      <div
+        ref={videoContainerRef}
+        className="video-container w-full h-full mt-4"
+      />
     </div>
   );
 }
