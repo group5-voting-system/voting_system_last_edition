@@ -12,28 +12,35 @@ const localListvoteRoutes = require("./routes/voteRoutes");
 const ChatRoutes = require("./routes/contactFormRoutes");
 const resultparty = require("./routes/resultpartyroutes");
 const PORT = 5000;
-const register_router = require("./routes/register_router");
+// const register_router = require("./routes/register_router");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use('/voting', votingRoutes);
+app.use("/voting", votingRoutes);
 app.use("/api", ChatRoutes);
 app.use("/api/candidate-requests", candidateRequestRoutes);
 app.use("/api/local-lists", localListRoutes);
-app.use("/db/vs", register_router);
+// app.use("/db/vs", register_router);
 app.use("/api/local-lists", localListRoutes);
 app.use("/api", partyListRoutes);
 app.use("/api", localListvoteRoutes);
 app.use("/api/party_list_votes", partyListvoteRoutes);
 app.use("/api/stats", statsRoutes);
 app.use("/api/voting", resultparty);
+
+// console.log("register router");
+// console.log("register router");
+const register_router = require("./routes/register_router");
+app.use("/db/vs", register_router);
+// console.log("after route");
+
+
 const db = require("./db/knex");
 
 const Stripe = require("stripe");
-const knexfile = require("./knexfile");
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -81,7 +88,7 @@ app.post("/create-payment-intent", async (req, res) => {
       amount,
       currency,
       status: paymentIntent.status,
-      created_at: new Date(),  // Add created_at timestamp
+      created_at: new Date(), // Add created_at timestamp
     });
 
     res.json({

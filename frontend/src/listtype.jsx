@@ -79,8 +79,8 @@ const ElectionCircleSelection = () => {
   const navigate = useNavigate();
 
   // يجب استبدال هذا بقيمة فعلية من sessionStorage
-  const national_id = "1234567906";
-  // const national_id = sessionStorage.getItem("national_id");
+  // const national_id = "2000000288";
+  const national_id = sessionStorage.getItem("national_id");
 
   const checkLocalVoteStatus = async () => {
     try {
