@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper/modules";
+import background2 from "./assets/jorflag.jpg";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
@@ -57,7 +58,19 @@ function PartyListVoting() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div
+      className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8"
+      style={{
+        backgroundImage: `url(${background2})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center text-gray-900 mb-12">
           التصويت على قوائم الأحزاب

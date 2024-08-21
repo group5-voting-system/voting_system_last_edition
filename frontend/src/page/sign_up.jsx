@@ -12,15 +12,18 @@ const Log_in = () => {
     e.preventDefault();
     sessionStorage.setItem("nid", nid);
 
+    console.log(nid,email);
+
     try {
       const response = await axios.post(`http://localhost:5000/db/vs/sign_up`, {
         nid,
         email,
-      });
-      if (response.data === "password") {
+      })
+      .catch(err => {});
+      if (response.data == "password") {
         alert("Log in successfully !!!");
         navigate("/log-in-home");
-      } else if (response.data === "otp") {
+      } else if (response.data == "otp") {
         alert("Log in successfully !!!");
         navigate("/log-in-new");
       }
