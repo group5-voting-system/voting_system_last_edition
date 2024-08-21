@@ -196,7 +196,7 @@ const Home = () => {
               className="bg-white border-2 border-jordan-red p-4 rounded-lg shadow-lg transition-transform hover:scale-105"
             >
               <img
-                src={ad.URL}
+                src="https://kenanahnews.com/wp-content/uploads/2017/08/20631398_1294117427381344_977119165_n-1.jpg"
                 alt={`TITLE ${ad.TITLE}`}
                 className="w-full h-32 object-cover mb-4 rounded-lg"
               />
