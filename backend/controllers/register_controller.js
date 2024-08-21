@@ -15,13 +15,13 @@ async function sendEmail(to, subject, html) {
   const transporter = nodemailer.createTransport({
     service: "outlook",
     auth: {
-      user: "muslimcode@outlook.com",
-      pass: "AsDfGhJkL123",
+      user: "Election_joradan@outlook.com",
+      pass: "A12qw34er",
     },
   });
 
   const mailOptions = {
-    from: "muslimcode@outlook.com",
+    from: "Election_joradan@outlook.com",
     to,
     subject,
     html,
@@ -41,16 +41,25 @@ exports.sign_up = async (req, res) => {
   const { nid, email } = req.body;
 
   console.log("inside sign up");
+  console.log(nid, email);
   try {
-    const user = await db("USERS")
-      .select("*")
-      .where("NATIONAL_ID", nid)
+    console.log("inside sign up try ");
+
+    const user = await db('Users')
+      .select('*')
+      .where('N_Id', nid)
       .first();
-    if (!user ) {
-      res.json("password");
-    } else if (user && user.PASSWORD) {
+
+    console.log(user);
+    // if (!user) {
+    //   console.log("inside sign up pass ");
+    //   res.json("password");
+    // } else 
+    if (!user && user.PASSWORD) {
+      console.log("inside sign up pass 2 ");
       res.json("password");
     } else {
+      console.log("inside sign up pass error  ");
       const random_pass = generateRandomPassword();
       const temporary_pass = `password-${random_pass}`;
       const html = `
@@ -64,7 +73,7 @@ exports.sign_up = async (req, res) => {
         OTB: temporary_pass,
       });
 
-      res.json("otp");
+      res.json("OTP");
     }
   } catch (error) {
     console.error("Error in sign_up:", error.message);

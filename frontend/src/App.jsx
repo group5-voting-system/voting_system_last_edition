@@ -15,13 +15,13 @@ import LocalListForm from "./CandidatesRequest.jsx";
 import ArabicGrid from "./cities";
 import "./App.css";
 import ElectionCircleSelection from "./listtype";
-import VotingCandidatesGrid from "./local_voting.jsx";
-import Voting from "./local_votes.jsx";
+// import VotingCandidatesGrid from "./local_voting.jsx";
+// import Voting from "./local_votes.jsx";
 import VotingSystem from "./VotingSystem.jsx";
 import PartyListForm from "./PartyListForm.jsx";
 import Results from "./results.jsx";
 import PartyListVoting from "./PartyListVoting.jsx";
-import PartyResults from "./partyresult.jsx";
+
 import News from "./news.jsx";
 import Log_in_new from "./page/log_in_new.jsx";
 import Log_in from "./page/sign_up.jsx";
@@ -43,13 +43,14 @@ function App() {
       {/* <News /> */}
       {/* <PartyListVoting />
       <ElectionCircleSelection />  */}
+      {/* <PartyResults /> */}
       <Routes>
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/log" element={<Log_in />} />
+        <Route path="/" element={<Log_in />} />
         <Route path="/log-in-home" element={<Log_in_home />} />
         <Route path="/log-in-new" element={<Log_in_new />} />
         <Route path="/update-pass" element={<Update_password />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/payment" element={<PaymentComponent />} />
         <Route path="/area" element={<ArabicGrid />} />
         <Route path="/type" element={<ElectionCircleSelection />} />
