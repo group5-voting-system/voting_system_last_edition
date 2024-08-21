@@ -47,13 +47,17 @@ exports.getStatss = async (req, res) => {
       (sum, list) => sum + list.COUNT_OF_VOTES,
       0
     );
+    const totalrealvoters = partyLists.reduce(
+      (sum, list) => sum + list.COUNT_OF_VOTES,
+      0
+    );
 
     const seatsPerList = qualifiedLists.map((list) => ({
       ...list,
       seats: Math.round((list.COUNT_OF_VOTES / totalQualifiedVotes) * 41),
     }));
 
-    // Ensure total seats is exactly 41
+    // // Ensure total seats is exactly 41
     let totalSeats = seatsPerList.reduce((sum, list) => sum + list.seats, 0);
     if (totalSeats !== 41) {
       const diff = 41 - totalSeats;
@@ -69,13 +73,13 @@ exports.getStatss = async (req, res) => {
 
     const electedCandidates = seatsPerList.flatMap((list) =>
       candidates
-        .filter((candidate) => candidate.LIST_ID === list.LIST_ID)
+        .filter((candidate) => candidate.LIST_ID == list.LIST_ID)
         .sort((a, b) => b.COUNT_OF_VOTES - a.COUNT_OF_VOTES)
         .slice(0, list.seats)
     );
 
     const totalElectedCandidates = electedCandidates.length;
-    const blankVotes = totalPartyVoters - totalQualifiedVotes;
+    const blankVotes = totalPartyVoters - totalrealvoters;
 
     res.json({
       totalPartyVoters,

@@ -7,7 +7,8 @@ import img4 from "../assets/voting.jpg";
 import CountdownTimer from "../comonamt/timer";
 import ElectoralDistricts from "../comonamt/ElectoralDistricts";
 import axios from "axios";
-import ChatBox from "../chatbooks/newchat" 
+import ChatBox from "../chatbooks/newchat" ;
+import DebateSection from "../../src/page/DebateSection/DebateSection";
 import { Carousel } from "flowbite-react";
 
 const Home = () => {
@@ -327,7 +328,9 @@ const Home = () => {
             </div>
           </div>
         </section>
-
+        <section className="mb-12" dir="rtl">
+          <DebateSection />
+        </section>
         <section className="mb-12" dir="rtl">
           <ChatBox />
         </section>
